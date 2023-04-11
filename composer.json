@@ -11,6 +11,7 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "nunomaduro/termwind": "^1.15",
+        "orchid/crud": "^3.9",
         "orchid/platform": "^13.10"
     },
     "require-dev": {

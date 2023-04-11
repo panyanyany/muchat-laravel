@@ -82,6 +82,24 @@ Route::screen('roles', RoleListScreen::class)
         ->parent('platform.index')
         ->push(__('Roles'), route('platform.systems.roles')));
 
+// Platform > Muchat > Users > User
+Route::screen('muchat/users/{user}/edit', UserEditScreen::class)
+     ->name('platform.systems.users.edit')
+     ->breadcrumbs(fn (Trail $trail, $user) => $trail
+         ->parent('platform.systems.users')
+         ->push($user->name, route('platform.systems.users.edit', $user)));
+
+// Platform > Muchat > Users > Create
+Route::screen('muchat/users/create', UserEditScreen::class)
+     ->name('platform.systems.users.create')
+     ->breadcrumbs(fn (Trail $trail) => $trail
+         ->parent('platform.systems.users')
+         ->push(__('Create'), route('platform.systems.users.create')));
+
+// Platform > Muchat > Users
+Route::screen('muchat/muchat_users', \App\Orchid\Screens\Muchat\MuchatUserListScreen::class)
+     ->name('platform.muchat.muchat_users');
+
 // Example...
 Route::screen('example', ExampleScreen::class)
     ->name('platform.example')

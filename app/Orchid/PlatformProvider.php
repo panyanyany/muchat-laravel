@@ -27,8 +27,8 @@ class PlatformProvider extends OrchidServiceProvider {
         return [
             Menu::make('用户管理')
                 ->icon('user')
-                ->route('platform.admin.user')
-                ->title('管理')
+                ->route('platform.muchat.muchat_users')
+                ->title('Muchat 管理')
             ,
 
             Menu::make('Dropdown menu')
