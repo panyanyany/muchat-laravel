@@ -3,6 +3,7 @@
 namespace App\Orchid\Screens\Muchat;
 
 use App\Models\MuchatUser;
+use App\View\Components\InlineEditor;
 use Orchid\Screen\Screen;
 use Orchid\Screen\TD;
 use Orchid\Support\Facades\Layout;
@@ -49,11 +50,11 @@ class MuchatUserListScreen extends Screen {
             Layout::table('muchat_users', [
                 TD::make('id')->sort(),
                 TD::make('slug'),
-                TD::make('expires_at')->sort(),
+                TD::make('expires_at')->sort()->component(InlineEditor::class, ['name' => 'expires_at', 'maxWidth' => 190]),
                 TD::make('bad_cnt')->sort(),
-                TD::make('name'),
+                TD::make('name')->component(InlineEditor::class, ['name' => 'name', 'maxWidth' => 60]),
                 TD::make('usage')->sort(),
-                TD::make('max_usage')->sort(),
+                TD::make('max_usage')->sort()->component(InlineEditor::class, ['name' => 'max_usage', 'maxWidth' => 60]),
                 TD::make('first_time')->sort(),
                 TD::make('max_days')->sort(),
                 TD::make('first_ip'),
