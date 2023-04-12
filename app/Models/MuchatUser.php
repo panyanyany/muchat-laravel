@@ -22,4 +22,16 @@ class MuchatUser extends Model {
         'created_at',
         'updated_at'
     ];
+    protected $fillable = [
+        'name',
+        'slug',
+        'expires_at',
+        'bad_cnt',
+        'usage',
+        'max_usage',
+        'first_time',
+        'max_days',
+        'created_at',
+        'updated_at'
+    ];
 }
