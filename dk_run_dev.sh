@@ -15,4 +15,4 @@ echo "Admin password: $psw"
 # init db
 docker compose exec db sh -c 'cat /app/docker/db/init.sql | mysql -uubuntu -pubuntu'
 
-docker compose exec admin yarn vite
+docker compose exec admin yarn vite --host 0.0.0.0

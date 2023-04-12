@@ -4,6 +4,8 @@ namespace App\Orchid\Screens\Muchat;
 
 use App\Models\MuchatUser;
 use App\View\Components\InlineEditor;
+use Orchid\Screen\Actions\Button;
+use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
 use Orchid\Screen\TD;
 use Orchid\Support\Facades\Layout;
@@ -37,7 +39,11 @@ class MuchatUserListScreen extends Screen {
      * @return \Orchid\Screen\Action[]
      */
     public function commandBar(): iterable {
-        return [];
+        return [
+            Link::make(__('Add'))
+                ->icon('plus')
+                ->route('platform.muchat.muchat_users.create'),
+        ];
     }
 
     /**

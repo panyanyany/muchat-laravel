@@ -89,11 +89,11 @@ class PlatformProvider extends OrchidServiceProvider {
             //     ->target('_blank')
             //     ->badge(fn () => Dashboard::version(), Color::DARK()),
             //
-            // Menu::make(__('Users'))
-            //     ->icon('user')
-            //     ->route('platform.systems.users')
-            //     ->permission('platform.systems.users')
-            //     ->title(__('Access rights')),
+            Menu::make(__('Users'))
+                ->icon('user')
+                ->route('platform.systems.users')
+                ->permission('platform.systems.users')
+                ->title(__('Access rights')),
             //
             // Menu::make(__('Roles'))
             //     ->icon('lock')

@@ -10,6 +10,7 @@ services:
 #      - .env:/app/tmp.env
     ports:
       - "8000:8000"
+      - "5173:5173"
     command: sh -c "/wait && php artisan serve --host=0.0.0.0"
     environment:
       - WAIT_HOSTS=db:3306
