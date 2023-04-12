@@ -24,11 +24,9 @@ class MuchatUserEditScreen extends Screen {
      *
      * @return array
      */
-    public function query(): iterable {
-        $query = MuchatUser::filters()->defaultSort('id', 'desc');
-        logger('query', ['sql' => $query->toSql()]);
+    public function query(MuchatUser $muchat_user): iterable {
         return [
-            'muchat_users' => $query->paginate(),
+            'muchat_user' => $muchat_user,
         ];
     }
 
@@ -49,8 +47,8 @@ class MuchatUserEditScreen extends Screen {
     public function commandBar(): iterable {
         return [
             Button::make(__('Save'))
-                  ->icon('save')
-                  ->method('save'),
+                ->icon('save')
+                ->method('save'),
         ];
     }
 

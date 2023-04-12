@@ -26,6 +26,10 @@
     @if(!config('platform.turbo.cache', false))
         <meta name="turbo-cache-control" content="no-cache">
     @endif
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" type="application/javascript"></script>
+
+    <link href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/toastr.js/2.1.3/toastr.min.css" type="text/css" rel="stylesheet" />
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/toastr.js/2.1.3/toastr.min.js" type="application/javascript"></script>
 
     <script src="{{ mix('/js/manifest.js','vendor/orchid') }}" type="text/javascript"></script>
     <script src="{{ mix('/js/vendor.js','vendor/orchid') }}" type="text/javascript"></script>
