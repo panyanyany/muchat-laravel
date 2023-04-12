@@ -24,5 +24,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        // dd(env('DB_HOST'));
     }
 }

@@ -1,0 +1,39 @@
+version: "3"
+services:
+  admin:
+    container_name: muchat-laravel
+    build: .
+    volumes:
+      - .:/app
+      - /app/vendor
+      - /app/node_modules
+#      - .env:/app/tmp.env
+    ports:
+      - "8000:8000"
+    command: sh -c "/wait && php artisan serve --host=0.0.0.0"
+    environment:
+      - WAIT_HOSTS=db:3306
+      - WAIT_HOSTS_TIMEOUT=300
+      - WAIT_SLEEP_INTERVAL=3
+      - WAIT_HOST_CONNECT_TIMEOUT=3
+    networks:
+      - default-network
+    depends_on:
+      - db
+  db:
+    image: mysql:8.0
+    volumes:
+      - .:/app
+    ports:
+      - "3306:3306"
+    networks:
+      - default-network
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: muchat
+      MYSQL_USER: ubuntu
+      MYSQL_PASSWORD: ubuntu
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+networks:
+  default-network:
