@@ -82,17 +82,20 @@ Route::screen('roles', RoleListScreen::class)
         ->parent('platform.index')
         ->push(__('Roles'), route('platform.systems.roles')));
 
-// Platform > Muchat > Users > User
+// Platform > Muchat > MuchatUsers
 Route::screen('muchat/muchat_users/{muchat_user}/edit', \App\Orchid\Screens\Muchat\MuchatUserEditScreen::class)
      ->name('platform.muchat.muchat_users.edit');
-
-// Platform > Muchat > Users > Create
 Route::screen('muchat/muchat_users/create', \App\Orchid\Screens\Muchat\MuchatUserEditScreen::class)
      ->name('platform.muchat.muchat_users.create');
-
-// Platform > Muchat > Users
 Route::screen('muchat/muchat_users', \App\Orchid\Screens\Muchat\MuchatUserListScreen::class)
      ->name('platform.muchat.muchat_users');
+// Platform > Muchat > OpenAiAccounts
+Route::screen('muchat/open_ai_accounts', \App\Orchid\Screens\Muchat\OpenAiAccountListScreen::class)
+     ->name('platform.muchat.open_ai_accounts');
+Route::screen('muchat/open_ai_accounts/{open_ai_account}/edit', \App\Orchid\Screens\Muchat\OpenAiAccountEditScreen::class)
+     ->name('platform.muchat.open_ai_accounts.edit');
+Route::screen('muchat/open_ai_accounts/create', \App\Orchid\Screens\Muchat\OpenAiAccountEditScreen::class)
+     ->name('platform.muchat.open_ai_accounts.create');
 
 // Example...
 Route::screen('example', ExampleScreen::class)

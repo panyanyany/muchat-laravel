@@ -30,13 +30,17 @@ class PlatformProvider extends OrchidServiceProvider {
                 ->route('platform.muchat.muchat_users')
                 ->title('Muchat 管理')
             ,
+            Menu::make('OpanAi账号管理')
+                ->icon('user')
+                ->route('platform.muchat.open_ai_accounts')
+            ,
 
-            Menu::make('Dropdown menu')
-                ->icon('code')
-                ->list([
-                    Menu::make('Sub element item 1')->icon('bag'),
-                    Menu::make('Sub element item 2')->icon('heart'),
-                ]),
+            // Menu::make('Dropdown menu')
+            //     ->icon('code')
+            //     ->list([
+            //         Menu::make('Sub element item 1')->icon('bag'),
+            //         Menu::make('Sub element item 2')->icon('heart'),
+            //     ]),
 
             // Menu::make('Example screen')
             //     ->icon('monitor')

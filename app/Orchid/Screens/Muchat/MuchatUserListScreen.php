@@ -3,6 +3,7 @@
 namespace App\Orchid\Screens\Muchat;
 
 use App\Models\MuchatUser;
+use App\View\AsComponents\Datetime;
 use App\View\Components\InlineEditor;
 use Orchid\Platform\Models\User;
 use Orchid\Screen\Actions\Button;
@@ -58,25 +59,22 @@ class MuchatUserListScreen extends Screen {
             Layout::table('muchat_users', [
                 TD::make('id')->sort(),
                 TD::make('slug'),
-                TD::make('expires_at')->sort()->component(InlineEditor::class, ['name' => 'expires_at', 'maxWidth' => 190, 'type' => 'datetime-local', 'updateUrl' => '/api/muchat/muchat_user/update']),
-                TD::make('bad_cnt')->sort(),
-                TD::make('name')->component(InlineEditor::class, ['name' => 'name', 'maxWidth' => 60]),
-                TD::make('usage')->sort(),
-                TD::make('max_usage')->sort()->component(InlineEditor::class, ['name' => 'max_usage', 'maxWidth' => 60]),
-                TD::make('first_time')->sort(),
-                TD::make('max_days')->sort(),
-                TD::make('first_ip'),
-                TD::make('referer'),
+                TD::make('expires_at', '过期时间')->sort()->asComponent(Datetime::class), //->component(InlineEditor::class, ['name' => 'expires_at', 'maxWidth' => 190, 'type' => 'datetime-local', 'updateUrl' => '/api/muchat/muchat_user/update']),
+                TD::make('bad_cnt', '敏感查询量')->sort(),
+                TD::make('name', '名称'), //->component(InlineEditor::class, ['name' => 'name', 'maxWidth' => 60]),
+                TD::make('usage', '查询量')->sort(),
+                TD::make('max_usage', '最大查询量')->sort(), //->component(InlineEditor::class, ['name' => 'max_usage', 'maxWidth' => 60]),
+                TD::make('first_time', '激活时间')->sort(),
+                TD::make('max_days', '最大天数')->sort(),
+                TD::make('first_ip', '激活IP'),
+                TD::make('referer', '来源'),
 
                 // TD::make('created_at', 'Date of creation')
                 //   ->render(function ($model) {
                 //       return $model->created_at ? $model->created_at->toDateTimeString() : null;
                 //   })->sort(),
 
-                TD::make('updated_at', 'Update date')
-                    ->render(function ($model) {
-                        return $model->updated_at ? $model->updated_at->toDateTimeString() : null;
-                    })->sort(),
+                TD::make('updated_at', 'Update date')->asComponent(Datetime::class)->sort(),
 
                 TD::make(__('Actions'))
                     ->align(TD::ALIGN_CENTER)
