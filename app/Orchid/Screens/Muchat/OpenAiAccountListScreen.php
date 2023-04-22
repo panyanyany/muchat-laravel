@@ -61,7 +61,7 @@ class OpenAiAccountListScreen extends Screen {
                 TD::make('usd_spent', '消耗')->sort(),
                 TD::make('usd_spent_limit', '最大消耗')->sort()->defaultHidden(),
                 TD::make('api_key', 'API KEY')->sort()->render(fn(OpenAiAccount $openAiAccount) => substr($openAiAccount->api_key, 0, 5) . '***'),
-                TD::make('status', '状态')->sort(),
+                TD::make('status', '状态')->sort()->render(fn(OpenAiAccount $openAiAccount) => OpenAiAccount::getStatuses()[$openAiAccount->status] ?? '未知'),
                 TD::make('query_cnt', '查询次数')->sort(),
                 TD::make('credit_used')->sort()->defaultHidden(),
                 TD::make('credit_available')->sort()->defaultHidden(),
@@ -74,22 +74,22 @@ class OpenAiAccountListScreen extends Screen {
                 TD::make('email_password')->sort()->defaultHidden(),
 
                 TD::make(__('Actions'))
-                    ->align(TD::ALIGN_CENTER)
-                    ->width('100px')
-                    ->render(fn(OpenAiAccount $openAiAccount) => DropDown::make()
-                        ->icon('options-vertical')
-                        ->list([
-                            Link::make(__('Edit'))
-                                ->route('platform.muchat.open_ai_accounts.edit', $openAiAccount->id)
-                                ->icon('pencil'),
+                  ->align(TD::ALIGN_CENTER)
+                  ->width('100px')
+                  ->render(fn(OpenAiAccount $openAiAccount) => DropDown::make()
+                                                                       ->icon('options-vertical')
+                                                                       ->list([
+                                                                           Link::make(__('Edit'))
+                                                                               ->route('platform.muchat.open_ai_accounts.edit', $openAiAccount->id)
+                                                                               ->icon('pencil'),
 
-                            Button::make(__('Delete'))
-                                ->icon('trash')
-                                ->confirm(__('Once the account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.'))
-                                ->method('remove', [
-                                    'id' => $openAiAccount->id,
-                                ]),
-                        ])),
+                                                                           Button::make(__('Delete'))
+                                                                                 ->icon('trash')
+                                                                                 ->confirm(__('Once the account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.'))
+                                                                                 ->method('remove', [
+                                                                                     'id' => $openAiAccount->id,
+                                                                                 ]),
+                                                                       ])),
             ]),];
     }
 }
