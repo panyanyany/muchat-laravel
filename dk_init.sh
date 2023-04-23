@@ -15,6 +15,6 @@ echo "Admin password: $psw"
 # init db
 #cat /app/docker/db/init.sql | mysql -hdb -uubuntu -pubuntu
 
-yarn vite --host 0.0.0.0 &
+yarn vite build
 php artisan serve --host=0.0.0.0
 
