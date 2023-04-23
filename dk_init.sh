@@ -17,4 +17,3 @@ echo "Admin password: $psw"
 
 yarn vite build
 php artisan serve --host=0.0.0.0
-
