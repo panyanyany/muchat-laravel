@@ -5,6 +5,7 @@ namespace App\Orchid\Screens\Muchat;
 use App\Models\MuchatUser;
 use App\View\AsComponents\Datetime;
 use App\View\Components\InlineEditor;
+use Illuminate\Http\Request;
 use Orchid\Platform\Models\User;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\DropDown;
@@ -12,6 +13,7 @@ use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
 use Orchid\Screen\TD;
 use Orchid\Support\Facades\Layout;
+use Orchid\Support\Facades\Toast;
 
 class MuchatUserListScreen extends Screen {
     /**
@@ -21,7 +23,6 @@ class MuchatUserListScreen extends Screen {
      */
     public function query(): iterable {
         $query = MuchatUser::filters()->defaultSort('id', 'desc');
-        logger('query', ['sql' => $query->toSql()]);
         return [
             'muchat_users' => $query->paginate(),
         ];
@@ -94,5 +95,13 @@ class MuchatUserListScreen extends Screen {
                                 ]),
                         ])),
             ]),];
+    }
+
+    /**
+     * @param Request $request
+     */
+    public function remove(Request $request): void {
+        MuchatUser::findOrFail($request->get('id'))->delete();
+        Toast::info(__('Muchat User was removed'));
     }
 }
