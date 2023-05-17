@@ -38,7 +38,7 @@ class OpenAiAccountEditLayout extends Rows {
 
             Input::make('open_ai_account.usd_spent')->type('number')->title(__('消耗'))->placeholder(__('usd_spent'))->value(0),
             Input::make('open_ai_account.usd_spent_limit')->type('number')->title(__('最大消耗'))->placeholder(__('usd_spent_limit'))->value(0),
-            Select::make('open_ai_account.status')->options(array_merge(['' => '请选择'], OpenAiAccount::getStatuses()))->title(__('状态'))->placeholder(__('status')),
+            Select::make('open_ai_account.status')->options(array_merge(['' => '请选择'], OpenAiAccount::getStatuses()))->value(OpenAiAccount::OAS_ACTIVE)->title(__('状态'))->placeholder(__('status')),
             Input::make('open_ai_account.query_cnt')->type('number')->title(__('查询次数'))->placeholder(__('query_cnt'))->value(0),
             // Input::make('credit_used')->type('number')->title(__('credit_used'))->placeholder(__('credit_used')),
             // Input::make('credit_available')->type('number')->title(__('credit_available'))->placeholder(__('credit_available')),
