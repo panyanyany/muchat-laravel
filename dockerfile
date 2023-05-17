@@ -15,7 +15,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_19.x | bash - &&\
     apt-get install -y nodejs &&\
     npm install -g yarn
 
-RUN yarn
+RUN yarn && yarn build
 
 # 等待 mysql 完全启动
 ENV WAIT_VERSION 2.11.0

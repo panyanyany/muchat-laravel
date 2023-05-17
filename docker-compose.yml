@@ -11,7 +11,7 @@ services:
     ports:
       - "8000:8000"
       - "5173:5173"
-    command: sh -c "/wait && php artisan serve --host=0.0.0.0"
+    command: sh -c "/wait && sh dk_init.sh && php artisan serve --host=0.0.0.0"
     environment:
       - WAIT_HOSTS=db:3306
       - WAIT_HOSTS_TIMEOUT=300
